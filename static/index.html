@@ -28,6 +28,15 @@ body
 .active {
   background-color: #FFA500;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+div.a {
+  text-align: center;
+}
 body {
   background-image: "images.jpeg";
   background-color: #FFDAB9;
@@ -44,6 +53,21 @@ body {
 <a href="#"><i class="fa fa-share-alt"></i></a> 
   <a href="#"><i class="fa fa-address-card"></i></a> 
 </div>
+
+
+<div class = "a">
+  <h3>Upload a memory for your records, Share them later!</h3>
+<form action="/action_page.php">
+  <label for="myfile">Select a Memory:</label>
+  <input type="file" id="myfile" name="myfile" multiple><br><br>
+  <input type="upload">
+</form>
+</div>
+
+
+
+<img src="jar_slower_3.gif" alt="This will display an animated GIF" class= "center" >
+
 
 </body>
 
