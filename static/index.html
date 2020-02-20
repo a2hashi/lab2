@@ -2,7 +2,14 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<style type="text/css">
+#dvPreview
+{
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+    min-height: 400px;
+    min-width: 400px;
+    display: none;
+}
 body 
 
 .icon-bar {
@@ -34,17 +41,45 @@ body
   margin-right: auto;
   width: 50%;
 }
+.container{
+   margin: 0 auto;
+   border: 0px solid black;
+   width: 100%;
+   height: 250px;
+   border-radius: 3px;
+   background-color: #FFF1E1;
+   text-align: center;
+}
+/* Preview */
+.preview{
+   width: 170px;
+   height: 170px;
+   border: 1px solid black;
+   margin: 0 auto;
+   background: white;
+}
+
+.preview img{
+   display: none;
+}
+/* Button */
+.button{
+   border: 0px;
+   background-color: #FF8C00;
+   color: white;
+   padding: 5px 15px;
+   margin-left: 10px;
+}
 div.a {
   text-align: center;
 }
 body {
   background-image: "images.jpeg";
-  background-color: #FFDAB9;
+  background-color: #FFF1E1;
 
 }
 </style>
 <body>
-
 
 
 <div class="icon-bar">
@@ -55,18 +90,69 @@ body {
 </div>
 
 
-<div class = "a">
-  <h3>Upload a memory for your records, Share them later!</h3>
-<form action="/action_page.php">
-  <label for="myfile">Select a Memory:</label>
-  <input type="file" id="myfile" name="myfile" multiple><br><br>
-  <input type="upload">
-</form>
+<div class ="a">
+  <h1>Happy Tank</h1>
+  <p>Upload Your Memories, Keep them, Save them, Share Them.</p>
 </div>
 
 
 
+
 <img src="images.jpeg" alt="This will display an animated GIF" class= "center" >
+
+
+<input id="fileupload" type="file" />
+<hr />
+
+<br />
+<br />
+<div id="dvPreview">
+</div>
+
+
+
+<div class ="a">
+  <h1>Previous Uploads</h1>
+  </div>
+
+
+
+
+  
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript">
+$(function () {
+    $("#fileupload").change(function () {
+        $("#dvPreview").html("");
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+        if (regex.test($(this).val().toLowerCase())) {
+            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                $("#dvPreview").show();
+                $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+            }
+            else {
+                if (typeof (FileReader) != "undefined") {
+                    $("#dvPreview").show();
+                    $("#dvPreview").append("<img />");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#dvPreview img").attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    alert("This browser does not support FileReader.");
+                }
+            }
+        } else {
+            alert("Please upload a valid image file.");
+        }
+    });
+});
+</script>
+
+
 
 
 </body>
@@ -74,4 +160,5 @@ body {
 
 
 
-</html> 
+
+</html>
