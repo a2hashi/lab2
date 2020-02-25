@@ -1,169 +1,227 @@
-<!DOCTYPE html>
+1<!DOCTYPE html>
 <html>
+<title>Login Happy Tank</title>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style type="text/css">
-#dvPreview
-{
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
-    min-height: 400px;
-    min-width: 400px;
-    display: none;
-}
-body 
-
-.icon-bar {
-  width: 100%;
-  background-color: #D2691E;
-  overflow: auto;
-}
-
-.icon-bar a {
-  float: left;
-  width: 20%;
-  text-align: center;
-  padding: 12px 0;
-  transition: all 0.3s ease;
+<style>
+a:link, a:visited {
+  background-color: #f44336;
   color: white;
-  font-size: 36px;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.icon-bar a:hover {
+a:hover, a:active {
+  background-color: #FFDAB9;
+}
+
+body 
+{
+  background-color: #FFDAB9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* style the container */
+.container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #FFDAB9;
+  padding: 20px 0 30px 0;
+} 
+
+/* style inputs and link buttons */
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+  background-color: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #55ACEE;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+
+/* style the submit button */
+input[type=submit] {
+  background-color: #FF8C00;
+  color: #FFDAB9;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
   background-color: #FF8C00;
 }
 
-.active {
-  background-color: #FFA500;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Two-column layout */
+.col {
+  float: left;
   width: 50%;
-}
-.container{
-   margin: 0 auto;
-   border: 0px solid black;
-   width: 100%;
-   height: 250px;
-   border-radius: 3px;
-   background-color: #FFF1E1;
-   text-align: center;
-}
-/* Preview */
-.preview{
-   width: 170px;
-   height: 170px;
-   border: 1px solid black;
-   margin: 0 auto;
-   background: white;
+  margin: auto;
+  padding: 0 50px;
+  margin-top: 6px;
 }
 
-.preview img{
-   display: none;
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-/* Button */
-.button{
-   border: 0px;
-   background-color: #FF8C00;
-   color: white;
-   padding: 5px 15px;
-   margin-left: 10px;
+
+/* vertical line */
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #ddd;
+  height: 175px;
 }
-div.a {
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFDAB9;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+  display: none;
+}
+
+/* bottom container */
+.bottom-container {
   text-align: center;
+  background-color: ##ff8c00;
+  border-radius: 0px 0px 4px 4px;
 }
-body {
-  background-image: "images.jpeg";
-  background-color: #FFF1E1;
 
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+  /* hide the vertical line */
+  .vl {
+    display: none;
+  }
+  /* show the hidden text on small screens */
+  .hide-md-lg {
+    display: block;
+    text-align: center;
+  }
+}
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #FFDAB9;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #b36200;
+  color: black;
+}
+
+/* Main content */
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
 }
 </style>
+</head>
 <body>
 
 
-<div class="icon-bar">
-  <a class="active" href="#"><i class="fa fa-circle"></i></a> 
-  <a href="https://www.facebook.com/?stype=lo&jlou=AfcUy1Z98qfXZYGrQtsbzCn0Gg9XZ9SNu2nYSn3On73BztRUtPws-uZt64FSJ9tMSbf5b7t8WFEDCTy3kf3393X58J-tTcCyLDO4Y-lDXdwh5g&smuh=65027&lh=Ac_eOm-8_WDNrUPe"><i class="fa fa-share-alt-square"></i></a> 
-<a href="#"><i class="fa fa-drivers-license"></i></a> 
-  <a href="https://a6-happytank.herokuapp.com"><i class="fa fa-power-off"></i></a> 
+<div class="main">
+  
 </div>
+<div class="container">
+  <form action="/action_page.php">
+    <div class="row">
 
+      <h2 style="text-align:center">Welcome to HappyTank</h2>
+            <h2 style="text-align:center">Login with Social Media or Manually</h2>
 
-<div class ="a">
-  <h1>Happy Tank</h1>
-  <p>Upload Your Memories, Keep them, Save them, Share Them.</p>
+      <div class="vl">
+        <span class="vl-innertext">or</span>
+      </div>
+
+      <div class="col">
+        <a href="#" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+         </a>
+        <a href="#" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+        </a>
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+          </i> Login with Google+
+        </a>
+      </div>
+
+      <div class="col">
+        <div class="hide-md-lg">
+          <p>Or sign in manually:</p>
+        </div>
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <a href="file:/upload%20folder%203/444.html" target="_blank">Login</a>
+      
+      </div>
+      
+    </div>
+  </form>
 </div>
-
-
-
-
-<img src="images.jpeg" alt="This will display an animated GIF" class= "center" >
-
-
-<input id="fileupload" type="file" class= "center" />
-<hr />
-
-<br />
-<br />
-<div id="dvPreview" class= "center">
-</div>
-
-
-
-<div class ="a">
-  <h1>Previous Uploads</h1>
-  </div>
-
-
-
-
-<img src="1.jpeg" alt="This will display an image" class= "center" >
-<img src="2.jpeg" alt="This will display an image" class= "center" >
-<img src="3.jpeg" alt="This will display an image" class= "center" >
-<img src="4.jpeg" alt="This will display an image" class= "center" >
-
-
-
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script language="javascript" type="text/javascript">
-$(function () {
-    $("#fileupload").change(function () {
-        $("#dvPreview").html("");
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-        if (regex.test($(this).val().toLowerCase())) {
-            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
-                $("#dvPreview").show();
-                $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
-            }
-            else {
-                if (typeof (FileReader) != "undefined") {
-                    $("#dvPreview").show();
-                    $("#dvPreview").append("<img />");
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $("#dvPreview img").attr("src", e.target.result);
-                    }
-                    reader.readAsDataURL($(this)[0].files[0]);
-                } else {
-                    alert("This browser does not support FileReader.");
-                }
-            }
-        } else {
-            alert("Please upload a valid image file.");
-        }
-    });
-});
-</script>
-
 
 
 
 </body>
-
-
-
-
-
-</html> 
+</html>
